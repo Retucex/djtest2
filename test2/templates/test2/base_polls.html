@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    {% block js %}
+        <script src={% static 'test2/js/base_polls.js' %}></script>
+    {% endblock %}
+    <link rel="stylesheet" href={% block style %}{% static 'test2/css/style.css' %}{% endblock %} />
+    <title>{% block title %}Polls{% endblock %}</title>
+</head>
+
+<body>
+    <h1>{% block header %}Polls{% endblock %}</h1>
+    <div id="sidebar">
+        <h2 class="hide_button">{% block sidebar_header %}Sidebar{% endblock %}</h2>
+        {% block sidebar %}
+        <ul>
+            <li class="hide"><a href={% url 'polls:index' %}>Polls Index</a></li>
+            <li class="hide"><a href={% url 'polls:new' %}>Create New Question</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        <h2>{% block content_header %}Content{% endblock %}</h2>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

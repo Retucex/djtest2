@@ -1,0 +1,24 @@
+{% extends 'test2/base_polls.html' %}
+{% load staticfiles %}
+
+{% block js %}
+    {{ block.super }}
+    <script src={% static 'test2/js/new.js' %}></script>
+{% endblock %}
+
+
+{% block content_header %}New Poll{% endblock %}
+
+{% block content %}
+    <form action="{% url 'polls:create' %}" method="post">
+    {% csrf_token %}
+        <label>Question:</label><br>
+        <input type="text" name="question_text" id="question_text" /><br>
+        <label>Valid until:</label><br>
+        <input type="date" value="{{ date }}" name="date" id="date"/><br>
+        <input type="time" value="00:00" name="time" id="time"/><br>
+        <label id="list_choices">Choices:</label><br>
+        <input type="button" id="button_add_choice" value="Add Choice"/>
+        <input type="submit" value="Create" />
+    </form>
+{% endblock %}
