@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var hidden = false;
+    /*var hidden = false;
     $('.hide_button').click(function(){
         if(hidden){
             $('.hide').show();
@@ -9,5 +9,9 @@ $(document).ready(function(){
             $('.hide').hide();
             hidden = true;
         }
-    });
+    });*/
+
+    $('#sidebar').accordion({
+        collapsible: true
+    })
 });
